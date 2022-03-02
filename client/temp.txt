@@ -1,0 +1,62 @@
+<div class="carousel-inner">
+    <?php for($i = 0; $i < count($image); $i++): ?>
+        <?php if($i == 0): ?>
+        <div class="carousel-item active">
+            <img src="<?php echo $image[$i]; ?>" class="img-fluid" alt="<?php echo basename($image[$i]); ?>">
+        </div>
+        <?php else: ?>
+        <div class="carousel-item">
+            <img src="<?php echo $image[$i]; ?>" class="img-fluid" alt="<?php echo basename($image[$i]); ?>">
+        </div>
+        <?php endif; ?>
+    <?php endfor; ?>
+</div>
+
+
+<ul class="carousel-indicators">
+    <?php for($i = 0; $i < count($image); $i++): ?>
+        <?php if($i == 0): ?>
+        <li data-target="#demo" data-slide-to="<?php echo $i; ?>" class="active"></li>
+        <?php else: ?>
+        <li data-target="#demo" data-slide-to="<?php echo $i; ?>"></li>
+        <?php endif; ?>
+    <?php endfor; ?>
+</ul>
+
+
+<title>
+<?php 
+    foreach($category as $key=>$value) {
+        if($_GET["catid"] == $key) {
+            echo ucwords(strtolower($value));
+            break;
+        }
+    }
+?>
+</title>
+
+
+<a href="product.php?catid=<?php echo $product["catid"]; ?>">
+    <?php 
+        foreach($category as $key=>$value) {
+            if($product["catid"] == $key) {
+                echo ucwords(strtolower($value));
+                break;
+            }
+        }
+    ?>
+</a>
+
+
+<li class="breadcrumb-item">
+    <a href="product.php?catid=<?php echo $product["catid"]; ?>">
+    <?php 
+        foreach($category as $key=>$value) {
+            if($product["catid"] == $key) {
+                echo ucwords(strtolower($value));
+                break;
+            }
+        }
+    ?>
+    </a>
+</li>
